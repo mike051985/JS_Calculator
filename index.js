@@ -58,13 +58,15 @@ class Calculator {
     }
   
     getDisplayNumber(number) {
-      const stringNumber = number.toString();
+      const stringNumber = number.toString().slice(0, 16);
+      //const stringNumber = Math.max(0, parseInt(number)).toString().slice(0, 13);
       const integerDigits = parseFloat(stringNumber.split('.')[0]);
       const decimalDigits = stringNumber.split('.')[1];
       let integerDisplay;
       if (isNaN(integerDigits)) {
         integerDisplay = '';
-      } else {
+      }
+      else {
         integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
       }
       if (decimalDigits != null) {
